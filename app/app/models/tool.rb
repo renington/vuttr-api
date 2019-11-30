@@ -3,7 +3,7 @@ class Tool < ApplicationRecord
   has_many :tags, through: :taggings
 
   def self.tagged_with(name)
-    Tag.find_by!(name: name).tools
+    Tool.all.joins(:tags).where("tags.name = ?", name)
   end
 
   def self.tag_counts
@@ -11,7 +11,7 @@ class Tool < ApplicationRecord
   end
 
   def tag_list
-    tags.map(&:name).join(', ')
+    tags.map(&:name)
   end
 
   def tag_list=(names)
@@ -19,4 +19,19 @@ class Tool < ApplicationRecord
       Tag.where(name: n.strip).first_or_create!
     end
   end
+
+  def add_tags(tags)
+    tags.each { |tag| self.tags.build name: tag }
+  end
+
+  def as_json options={}
+    {
+      id: self.id,
+      title: self.title,
+      link: self.link,
+      description: self.description,
+      tags: tag_list
+    }
+  end
+
 end
