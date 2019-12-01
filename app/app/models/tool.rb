@@ -2,24 +2,19 @@ class Tool < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
+  validates_presence_of :title
+
   def self.tagged_with(name)
     Tool.all.joins(:tags).where("tags.name = ?", name)
-  end
-
-  def self.tag_counts
-    Tag
-      .select('tags.*, count(taggings.tag_id) as count')
-      .joins(:taggings)
-      .group('taggings.tag_id')
   end
 
   def tag_list
     tags.map(&:name)
   end
 
-  def add_tags(tags)
-    tags.each do |tag|
-      Tag.where(name: n.strip).first_or_create!
+  def add_tags(tag_names)
+    tag_names.each do |tag|
+      self.tags << Tag.where(name: tag.strip).first_or_create!
     end
   end
 
