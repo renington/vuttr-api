@@ -14,7 +14,9 @@ class Api::V1::ToolsController < Api::V1::ApiController
 
   # POST /api/v1/tools
   def create
-    @tool = Tool.new(tool_params).add_tags(params[:tags])
+    @tool = Tool.new(tool_params)
+    @tool.add_tags(params[:tags])
+    
     if @tool.save
       render json: @tool, status: :created
     else
@@ -34,6 +36,7 @@ class Api::V1::ToolsController < Api::V1::ApiController
   # DELETE /api/v1/tools/1
   def destroy
     @tool.destroy
+    render status: :no_content
   end
 
   private
