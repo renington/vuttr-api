@@ -24,15 +24,6 @@ class Api::V1::ToolsController < Api::V1::ApiController
     end
   end
 
-  # PATCH/PUT /api/v1/tools/1
-  def update
-    if @tool.update(tool_params)
-      render json: @tool, status: :ok
-    else
-      render json: @tool.errors, status: :unprocessable_entity
-    end
-  end
-
   # DELETE /api/v1/tools/1
   def destroy
     @tool.destroy
@@ -45,6 +36,6 @@ class Api::V1::ToolsController < Api::V1::ApiController
   end
 
   def tool_params
-    params.require(:tool).permit(:title, :link, :description)
+    params.permit(:title, :link, :description)
   end
 end

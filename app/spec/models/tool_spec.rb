@@ -17,20 +17,20 @@ RSpec.describe Tool, type: :model do
     let!(:tag) { create(:tag) }
     subject { Tool.tagged_with(tag.name) }
 
-    describe 'when is called without unknown' do
+    context 'when is called without unknown' do
       it 'returns nil array' do
         expect(subject).to match_array([])
       end
     end
 
-    describe 'when is called with a tag' do
-      describe "when there is not tools with that tag" do
+    context 'when is called with a tag' do
+      context "when there is not tools with that tag" do
         it 'returns nil array' do
           expect(subject).to match_array([])
         end
       end
       
-      describe "when there is no tools with that tag" do
+      context "when there is no tools with that tag" do
         let!(:tagging) { create(:tagging, tag: tag) }
       
         it 'returns a tool array' do
@@ -43,13 +43,13 @@ RSpec.describe Tool, type: :model do
   describe '#tag_list' do
     subject { tool.tag_list }
 
-    describe 'when there are no tags' do
+    context 'when there are no tags' do
       it 'returns nil' do
         expect(subject).to be_empty
       end
     end
     
-    describe 'when there is a tag' do
+    context 'when there is a tag' do
       let!(:tagging) { create(:tagging, tool: tool) }
       
       it 'returns an array of tags' do
@@ -59,7 +59,7 @@ RSpec.describe Tool, type: :model do
   end
 
   describe '#add_tags' do
-    describe 'when it is called with tags' do
+    context 'when it is called with tags' do
       subject { tool.add_tags(['Microsoft', 'Linux']) }
 
       it 'adds all tags' do

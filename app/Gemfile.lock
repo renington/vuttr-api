@@ -127,6 +127,12 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+    rspec-api-blueprint-formatter (0.2.2)
+      rspec (~> 3.5)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
     rspec-expectations (3.9.0)
@@ -181,6 +187,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (= 5.1.4)
+  rspec-api-blueprint-formatter
   rspec-rails (~> 3.6)
   spring
   spring-commands-rspec

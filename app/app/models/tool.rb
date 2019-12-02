@@ -13,6 +13,8 @@ class Tool < ApplicationRecord
   end
 
   def add_tags(tag_names)
+    return if tag_names.nil?
+    
     tag_names.each do |tag|
       self.tags << Tag.where(name: tag.strip).first_or_create!
     end
