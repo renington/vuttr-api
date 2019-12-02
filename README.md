@@ -11,17 +11,20 @@ Very Useful Tools to Remember
 $ git clone 'https://github.com/renington/vuttr-api.git'
 $ cd vuttr-api
 $ docker-compose up --build
-```
-### Running app
-```
 $ docker-compose run --rm web rails db:create
 $ docker-compose run --rm web rails db:migrate
 $ docker-compose run --rm web rails db:seed
 ```
 
+### Running app
+```
+$ docker-compose up
+Now, it is available on: http://localhost:3000/
+```
+
 ## Running tests
 ```
-docker-compose run --rm app rspec
+$ docker-compose run --rm app rspec
 ```
 
 ## Running blueprint (CLI)
