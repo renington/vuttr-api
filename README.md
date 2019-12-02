@@ -22,6 +22,9 @@ $ docker-compose up
 Now, it is available on: http://localhost:3000/
 ```
 
+### Available routes
+[Blueprint Documentation](https://github.com/renington/vuttr-api/blob/master/app/spec/apispec.md)
+
 ## Running tests
 ```
 $ docker-compose run --rm app rspec
