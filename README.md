@@ -1,6 +1,16 @@
 # VUTTR
 Very Useful Tools to Remember
 
+## Heroku Demo
+https://vuttr-future.herokuapp.com/
+
+### Get token
+ROUTE: https://vuttr-future.herokuapp.com/api/v1/user_token
+```
+{ "auth": { "email": "test@test.com", "password": "123456789" }} 
+```
+#### More routes in blueprint documentation
+
 ## Getting Started
 #### Prerequisites
 - [Docker](https://www.docker.com/)
