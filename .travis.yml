@@ -1,7 +1,11 @@
 language: ruby
 cache:
 - bundler
+before_install:
+- gem install bundler
 before_script:
+- cd app
+- bundle install
 - bundle exec rake db:migrate
 - bundle exec rake assets:precompile
 - bundle exec rake spec
