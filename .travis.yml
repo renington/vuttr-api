@@ -1,0 +1,16 @@
+language: ruby
+cache:
+- bundler
+before_script:
+- bundle exec rake db:migrate
+- bundle exec rake assets:precompile
+- bundle exec rake spec
+services:
+  - postgresql
+deploy:
+  provider: heroku
+  api_key: 
+    secure: "M/4ROxGdW1Wlku4DmBvg8tr4xwXhE4Nvtb1PX61AGiR7TknIm88TFdnFEW91YD+FrHd71TE0R5I2hX8l7HEJJjnZaGaokDaCvqXkn01NHJsx5vwdDjP7soXl4RZBUWmiltuJw9D9hPI+/fYo/ZtUrfhvgrOMUTJyhaPpBIlH3sBB0wVbNadntG1epeZjRNHE2X33r3V8b7uT+FpkG9MaGJSnmDKSfocT/gnRI8bADODo+43kg/wfp7aSoKg+OyK6JO6deA5pP3rExvTqrylsBSFyhpV9/xojwVNjFDh7j80L/Mv6Hd18S4qjdw2f8rokuE23azPUwtl2aYSgZ61+hxC+UwLX01EJHBXmU3K7llNO3yTS3zFXWQBQ/i3/M66v9ZulLN3SEwFcTdkiSxxXdAnoaayKBiRY1+15pih2FPFBNK4ScIwqc3eaYRPueeFw2WxIJVN+WbkH5oFiQvVa6tnwCT4M9AL58r7IQxRH3UO7m24Q3KsebRH+ONkOni4NXOBuqdYN4F1wgTkyU/GjFov+363rUIyg3TF1Ketz5C1bcVheXhgreJlene5DbvkwjAYajue1AdV80edAgK7jJqZG2H7QoLRXhXMGLrdbepnq/cIpFCJwKNo5kU2ByDeoREDqGRi54Pxf7FKw61uQ/+LESpWJ8NjB9RTSoBEbz/4="
+  app: vuttr-future
+  on:
+    repo: renington/vuttr-api
